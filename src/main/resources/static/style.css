@@ -1,0 +1,50 @@
+body {
+    font-family: Arial;
+}
+
+form {
+    line-height: 1.6em;
+}
+
+table th {
+    background-color: gainsboro;
+    width:120px;
+    padding:7px 3px;
+}
+
+table td {
+    padding:4px 3px;
+    text-align: center;
+}
+
+.add-text {
+    text-align: right;
+    background-color: gainsboro;
+    padding:7px 3px;
+}
+
+.criteria {
+    text-align: center;
+    width:800px;
+}
+
+.criteria-selected {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.end-button {
+    margin:0 0 20px 10px;
+    padding: 0 15px;
+}
+
+.add-input {
+    text-align: left;
+}
+
+.mainFrame {
+    padding:15px;
+    margin:10px;
+    border: solid 4px gainsboro;
+    width: 200px;
+}

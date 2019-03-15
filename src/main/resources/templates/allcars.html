@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Używane | Strona główna</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -53,7 +54,23 @@
         </tbody>
     </table>
 </div>
-
+<br>
+<form action="/main">
+    <!--<select name="searchCategory">-->
+        <!--<option>-&#45;&#45;</option>-->
+        <!--<option name="type">typ</option>-->
+        <!--<option name="make">marka</option>-->
+        <!--<option name="model">model</option>-->
+        <!--<option name="year">rok produkcji</option>-->
+        <!--<option name="fuel">paliwo</option>-->
+        <!--<option name="engine">pojemność</option>-->
+        <!--<option name="power">moc</option>-->
+        <!--<option name="location">miasto</option>-->
+    <!--</select>-->
+    <input type="text" name="searchWord" />
+    <input type="submit" value="Szukaj" />
+</form>
+<br>
 <div class="add-link"><a href="/addcar">+ Dodaj samochód</a></div>
 
 </body>
