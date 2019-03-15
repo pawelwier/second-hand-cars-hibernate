@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new car</title>
+</head>
+<body>
+
+    <form action="#" th:action="@{/caradded}" th:object="${car}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <table>
+            <tr>
+                <td>Typ:</td>
+                <td><input type="text" th:field="*{type}" /></td>
+            </tr>
+            <tr>
+                <td>Marka:</td>
+                <td><input type="text" th:field="*{make}" /></td>
+            </tr>
+            <tr>
+                <td>Model:</td>
+                <td><input type="text" th:field="*{model}" /></td>
+            </tr>
+            <tr>
+                <td>Rocznik:</td>
+                <td><input type="number" th:field="*{year}" /></td>
+            </tr>
+            <tr>
+                <td>Paliwo:</td>
+                <td><input type="text" th:field="*{fuel}" /></td>
+            </tr>
+            <tr>
+                <td>Pojemność silnika:</td>
+                <td><input type="number" th:field="*{engine}" /></td>
+            </tr>
+            <tr>
+                <td>Moc:</td>
+                <td><input type="number" th:field="*{power}" /></td>
+            </tr>
+            <tr>
+                <td>Miasto:</td>
+                <td><input type="text" th:field="*{location}" /></td>
+            </tr>
+            <tr>
+                <td>Cena:</td>
+                <td><input type="number" th:field="*{price}" /></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+
+
+
+</body>
+</html>

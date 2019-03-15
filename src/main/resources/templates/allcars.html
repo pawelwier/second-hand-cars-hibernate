@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+
+    <!--<form action="/age/search" method="post">-->
+    <!--<input type="number" name="newage">-->
+    <!--<input type="submit" value="szukaj wieku">-->
+    <!--</form>-->
+    <!--<form action="/name/search" method="post">-->
+    <!--<input type="text" name="newname">-->
+    <!--<input type="submit" value="szukaj imienia">-->
+    <!--</form>-->
+
+    <div class="msg" th:if="${message}" th:text="${message}"></div>
+
+    <table>
+        <thead>
+        <tr>
+            <!--<th>Id</th>-->
+            <th>Typ</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rok produkcji</th>
+            <th>Paliwo</th>
+            <th>Pojemność</th>
+            <th>Moc</th>
+            <th>Miasto</th>
+            <th>Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="car: ${cars}">
+            <!--<td th:text="${car.id}"></td>-->
+            <td th:text="${car.type}"></td>
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.year}"></td>
+            <td th:text="${car.fuel}"></td>
+            <td> <span th:text="${car.engine}"> </span>ccm</td>
+            <td> <span th:text="${car.power}"></span> KM</td>
+            <td th:text="${car.location}"></td>
+            <td> <span th:text="${car.price}"> </span>zł</td>
+            <!--<td><a th:href="@{|/people/${person.id}/delete|}">Delete</a></td>-->
+            <!--<td><a th:href="@{|/people/${person.id}/update|}">Edit</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="add-link"><a href="/addcar">+ Dodaj samochód</a></div>
+
+</body>
+
+</html>
