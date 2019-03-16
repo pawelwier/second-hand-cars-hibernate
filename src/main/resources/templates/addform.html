@@ -6,47 +6,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="msg" th:if="${message}" th:text="${message}"></div>
 
-    <form action="#" th:action="@{/caradded}" th:object="${car}" method="post">
+    <form action="/caradded" method="post">
 
-        <input type="hidden" th:field="*{id}">
+        <input type="hidden" name="id">
 
         <table>
             <tr>
                 <td class="add-text">Typ:</td>
-                <td class="add-input"><input size="10" type="text" th:field="*{type}" /></td>
+                <td class="add-input">
+                    <select name="type">
+                    <option value="osobowy">osobowy</option>
+                    <option value="dostawczy">dostawczy</option>
+                </select>
+                </td>
             </tr>
             <tr>
                 <td class="add-text">Marka:</td>
-                <td class="add-input"><input size="10" type="text" th:field="*{make}" /></td>
+                <td class="add-input"><input size="10" type="text" name="make" /></td>
             </tr>
             <tr>
                 <td class="add-text">Model:</td>
-                <td class="add-input"><input size="10" type="text" th:field="*{model}" /></td>
+                <td class="add-input"><input size="10" type="text" name="model" /></td>
             </tr>
             <tr>
                 <td class="add-text">Rocznik:</td>
-                <td class="add-input"><input type="number" value="2000" min="1960" max="2019" th:field="*{year}" /></td>
+                <td class="add-input"><input type="number" value="2000" min="1960" max="2019" name="year" /></td>
             </tr>
             <tr>
                 <td class="add-text">Paliwo:</td>
-                <td class="add-input"><input size="10" type="text" th:field="*{fuel}" /></td>
+                <td class="add-input"> <select name="fuel">
+                    <option value="benzyna">benzyna</option>
+                    <option value="diesel" >diesel</option>
+                    <option value="benzyna + LPG" >benzyna + LPG</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="add-text">Pojemność silnika:</td>
-                <td class="add-input"><input min="500" max="9999" type="number" th:field="*{engine}" /></td>
+                <td class="add-input"><input min="500" max="9999" value="1000" type="number" name="engine" /> ccm</td>
             </tr>
             <tr>
                 <td class="add-text">Moc:</td>
-                <td class="add-input"><input min="20" max="999" type="number" th:field="*{power}" /></td>
+                <td class="add-input"><input min="20" max="999" type="number" name="power" /> KM</td>
             </tr>
             <tr>
                 <td class="add-text">Miasto:</td>
-                <td class="add-input"><input size="10" type="text" th:field="*{location}" /></td>
+                <td class="add-input"><input size="10" type="text" name="location" /></td>
             </tr>
             <tr>
                 <td class="add-text">Cena:</td>
-                <td class="add-input"><input min="1000" max="999999" type="number" th:field="*{price}" /></td>
+                <td class="add-input"><input min="1000" max="999999" type="number" name="price" /> zł</td>
             </tr>
             <tr>
                 <td></td>

@@ -6,19 +6,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div class="msg" th:text="${deletedcar}"></div>
 <div class="container">
-
-    <!--<form action="/age/search" method="post">-->
-    <!--<input type="number" name="newage">-->
-    <!--<input type="submit" value="szukaj wieku">-->
-    <!--</form>-->
-    <!--<form action="/name/search" method="post">-->
-    <!--<input type="text" name="newname">-->
-    <!--<input type="submit" value="szukaj imienia">-->
-    <!--</form>-->
-
-    <div class="msg" th:if="${message}" th:text="${message}"></div>
 
     <table>
         <thead>
@@ -33,6 +22,7 @@
             <th>Moc</th>
             <th>Miasto</th>
             <th>Cena</th>
+            <th class="delete-header">Usuń</th>
         </tr>
         </thead>
         <tbody>
@@ -48,7 +38,7 @@
             <td> <span th:text="${car.power}"></span> KM</td>
             <td th:text="${car.location}"></td>
             <td> <span th:text="${car.price}"> </span>zł</td>
-            <!--<td><a th:href="@{|/people/${person.id}/delete|}">Delete</a></td>-->
+            <td><a th:href="@{|/cars/${car.id}/delete|}">Usuń</a></td>
             <!--<td><a th:href="@{|/people/${person.id}/update|}">Edit</a></td>-->
         </tr>
         </tbody>

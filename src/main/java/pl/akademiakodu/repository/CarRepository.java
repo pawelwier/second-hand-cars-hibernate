@@ -15,4 +15,7 @@ public interface CarRepository extends CrudRepository<Car, Integer> {
             "c.location=?1 OR c.power=?1 OR c.price=?1 OR c.year=?1")
     List<Car> searchByKeyword(String name);
 
+    @Query("SELECT c FROM Car c WHERE c.id=?1")
+    Car getCarById(Integer id);
+
 }

@@ -44,7 +44,17 @@ table td {
 
 .mainFrame {
     padding:15px;
+    background-color: gainsboro;
     margin:10px;
-    border: solid 4px gainsboro;
     width: 200px;
+}
+
+.msg {
+    color:darkred;
+    font-size:1.2em;
+    padding:10px 0 15px 70px;
+}
+
+.delete-header {
+    background-color: #ff9999;
 }

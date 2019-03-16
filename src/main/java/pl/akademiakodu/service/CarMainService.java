@@ -14,17 +14,17 @@ public class CarMainService {
    @Autowired
    CarRepository carRepository;
 
-   public List<Car> searchByKeyword(String word) {
-
-       List<Car> list = new ArrayList<>();
-
-       for (Car c : list) {
-           if (String.valueOf(c.getEngine()).equals(word) || c.getMake().equals(word)) {
-               list.add(c);
-           }
-       }
-
-       return list;
-   }
+//   public Car findCarById(Integer id) {
+//
+//       Car car= new Car();
+//
+//       for (Car c : carRepository.getAllCars()) {
+//           if (c.getId() == id) {
+//               car = c;
+//           }
+//       }
+//
+//       return car;
+//   }
 
 }
