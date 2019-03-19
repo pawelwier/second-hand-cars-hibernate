@@ -1,5 +1,9 @@
 package pl.akademiakodu.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
@@ -7,6 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 @Entity
 public class Car {
 
@@ -111,19 +120,19 @@ public class Car {
     public void setPrice(int price) {
         this.price = price;
     }
-    public Car() {
-
-    }
-
-    public Car(String type, String make, String model, int year, String fuel, int engine, int power, String location, int price) {
-        this.type = type;
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.fuel = fuel;
-        this.engine = engine;
-        this.power = power;
-        this.location = location;
-        this.price = price;
-    }
+//    public Car() {
+//
+//    }
+//
+//    public Car(String type, String make, String model, int year, String fuel, int engine, int power, String location, int price) {
+//        this.type = type;
+//        this.make = make;
+//        this.model = model;
+//        this.year = year;
+//        this.fuel = fuel;
+//        this.engine = engine;
+//        this.power = power;
+//        this.location = location;
+//        this.price = price;
+//    }
 }
