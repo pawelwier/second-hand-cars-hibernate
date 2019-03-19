@@ -1,9 +1,6 @@
 package pl.akademiakodu.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.akademiakodu.model.Car;
 import pl.akademiakodu.model.dtos.CarDto;
 import pl.akademiakodu.service.CarService;
@@ -30,5 +27,21 @@ public class CarHomeController {
     public List<CarDto> showAllCarsDto() {
         return carService.showCarsDto();
     }
+
+    @PostMapping("/cars/add")
+    public Car addCarToDatabase(@RequestParam String type,
+                            @RequestParam String make,
+                            @RequestParam String model,
+                            @RequestParam Integer year,
+                            @RequestParam String fuel,
+                            @RequestParam Integer engine,
+                            @RequestParam Integer power,
+                            @RequestParam String location,
+                            @RequestParam Integer price) {
+        return carService.addNewCar(type, make, model, year, fuel, engine, power, location, price);
+
+    }
+
+
 
 }

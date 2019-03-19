@@ -14,10 +14,11 @@ import java.util.List;
 @Controller
 public class CarMainController {
 
-    CarService carMainService;
+    private CarService carService;
 
-
-
+    public CarMainController(CarService carService) {
+        this.carService = carService;
+    }
 
     @Autowired
     private CarRepository carRepository;
@@ -37,35 +38,33 @@ public class CarMainController {
         return "allcars";}
 
     @GetMapping("/addcar")
-    public String showAddForm(ModelMap modelMap) {
-
-        modelMap.put("car", new Car());
+    public String showAddForm() {
 
         return "addform";
     }
 
-//    @PostMapping("/caradded")
-//    public String addNewCar(@RequestParam String type,
-//                            @RequestParam String make,
-//                            @RequestParam String model,
-//                            @RequestParam Integer year,
-//                            @RequestParam String fuel,
-//                            @RequestParam Integer engine,
-//                            @RequestParam Integer power,
-//                            @RequestParam String location,
-//                            @RequestParam Integer price,
-//                            RedirectAttributes redirectAttributes) {
-//
-//            if (type!=null && make!=null && model!=null && year!=null && fuel!=null && engine!=null &&
-//                   power !=null && location!=null && price!=null) {
-//                carRepository.save(new Car(type, make, model, year, fuel, engine, power, location, price));
-//                return "ready";
-//            } else {
-//                redirectAttributes.addFlashAttribute("message", "Wypełnij wszystkie pola.");
-//                return "redirect:/addcar";
-//            }
-//
-//    }
+    @PostMapping("/caradded")
+    public String addCar(@RequestParam(required = false) String type,
+                            @RequestParam(required = false)  String make,
+                            @RequestParam(required = false)  String model,
+                            @RequestParam(required = false)  Integer year,
+                            @RequestParam(required = false)  String fuel,
+                            @RequestParam(required = false)  Integer engine,
+                            @RequestParam(required = false)  Integer power,
+                            @RequestParam(required = false)  String location,
+                            @RequestParam(required = false)  Integer price,
+                            RedirectAttributes redirectAttributes) {
+
+            if (type!=null && make!=null && model!=null && year!=null && fuel!=null && engine!=null &&
+                   power !=null && location!=null && price!=null) {
+                carService.addNewCar(type, make, model, year, fuel, engine, power, location, price);
+                return "redirect:/main";
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Wypełnij wszystkie pola.");
+                return "redirect:/addcar";
+            }
+
+    }
 
 
     @RequestMapping("/cars/{id}/delete")

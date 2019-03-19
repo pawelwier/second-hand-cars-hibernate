@@ -35,5 +35,22 @@ public class CarService {
               .collect(Collectors.toList());
    }
 
+   public Car addNewCar(String type, String make, String model, Integer year, String fuel, Integer engine,
+                        Integer power, String location, Integer price) {
+
+      return carRepository.save(Car
+              .builder()
+              .type(type)
+              .make(make)
+              .model(model)
+              .year(year)
+              .fuel(fuel)
+              .engine(engine)
+              .power(power)
+              .location(location)
+              .price(price)
+              .build());
+   }
+
 
 }
