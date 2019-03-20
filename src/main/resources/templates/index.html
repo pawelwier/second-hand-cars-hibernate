@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Używane | Strona główna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div th:if="${car}" class="msg-details">
+    <h2>Szczegóły pojazu:</h2>
+    Typ: <span th:text="${car.type}"></span >,
+    <span th:text="${car.make}"></span >
+    <span th:text="${car.model}"></span >, rok produkcji:
+    <span th:text="${car.year}"></span >, paliwo:
+    <span th:text="${car.fuel}"></span >, pojemność:
+    <span th:text="${car.engine}"></span >ccm, moc:
+    <span th:text="${car.power}"></span >KM,
+    <span th:text="${car.location}"></span >, cena:
+    <span th:text="${car.price}"></span >zł.
+</div>
+
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <!--<th>Id</th>-->
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Cena</th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="car: ${carsdto}">
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.model}"></td>
+            <td> <span th:text="${car.price}"> </span>zł</td>
+            <td><a th:href="@{|/cars/${car.id}/details|}">Szczegóły</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<form action="/">
+    <input type="text" name="searchWord" />
+    <input type="submit" value="Szukaj" />
+</form>
+<br>
+<div class="add-link"><a href="/main">Pełna lista</a></div>
+
+</body>
+
+</html>

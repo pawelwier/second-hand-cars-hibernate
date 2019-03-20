@@ -5,8 +5,6 @@ import pl.akademiakodu.commons.Mapper;
 import pl.akademiakodu.model.Car;
 import pl.akademiakodu.model.dtos.CarDto;
 
-import lombok.Builder;
-
 @Component
 public class CarMapper implements Mapper<Car, CarDto> {
 
@@ -14,6 +12,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
     public CarDto map(Car from) {
         return CarDto
                 .builder()
+                .id(from.getId())
                 .make(from.getMake())
                 .model(from.getModel())
                 .price(from.getPrice())
@@ -24,6 +23,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
     public Car reverse(CarDto to) {
         return Car
                 .builder()
+                .id(to.getId())
                 .make(to.getMake())
                 .model(to.getModel())
                 .price(to.getPrice())

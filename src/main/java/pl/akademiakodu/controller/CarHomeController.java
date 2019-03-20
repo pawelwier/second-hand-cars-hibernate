@@ -38,10 +38,9 @@ public class CarHomeController {
                             @RequestParam Integer power,
                             @RequestParam String location,
                             @RequestParam Integer price) {
+
         return carService.addNewCar(type, make, model, year, fuel, engine, power, location, price);
 
     }
-
-
 
 }

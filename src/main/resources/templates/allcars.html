@@ -12,7 +12,6 @@
     <table>
         <thead>
         <tr>
-            <!--<th>Id</th>-->
             <th>Typ</th>
             <th>Marka</th>
             <th>Model</th>
@@ -28,7 +27,6 @@
         <tbody>
 
         <tr th:each="car: ${cars}">
-            <!--<td th:text="${car.id}"></td>-->
             <td th:text="${car.type}"></td>
             <td th:text="${car.make}"></td>
             <td th:text="${car.model}"></td>
@@ -39,30 +37,19 @@
             <td th:text="${car.location}"></td>
             <td> <span th:text="${car.price}"> </span>zł</td>
             <td><a th:href="@{|/cars/${car.id}/delete|}">Usuń</a></td>
-            <!--<td><a th:href="@{|/people/${person.id}/update|}">Edit</a></td>-->
         </tr>
         </tbody>
     </table>
 </div>
 <br>
 <form action="/main">
-    <!--<select name="searchCategory">-->
-        <!--<option>-&#45;&#45;</option>-->
-        <!--<option name="type">typ</option>-->
-        <!--<option name="make">marka</option>-->
-        <!--<option name="model">model</option>-->
-        <!--<option name="year">rok produkcji</option>-->
-        <!--<option name="fuel">paliwo</option>-->
-        <!--<option name="engine">pojemność</option>-->
-        <!--<option name="power">moc</option>-->
-        <!--<option name="location">miasto</option>-->
-    <!--</select>-->
     <input type="text" name="searchWord" />
     <input type="submit" value="Szukaj" />
 </form>
 <br>
 <div class="add-link"><a href="/addcar">+ Dodaj samochód</a></div>
-
+<br>
+<div class="add-link"><a href="/">Skrócona lista</a></div>
 </body>
 
 </html>

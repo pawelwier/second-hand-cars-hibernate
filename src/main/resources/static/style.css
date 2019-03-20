@@ -54,6 +54,20 @@ table td {
     font-size:1.2em;
     padding:10px 0 15px 70px;
 }
+.msg-details {
+    background-color: gainsboro;
+    font-size:1.2em;
+    margin:10px 0 15px 2px;
+    padding:10px;
+    width: 1300px;
+}
+
+.msg-details h2 {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 0 0 5px 0;
+    margin: 0;
+}
 
 .delete-header {
     background-color: #ff9999;
