@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Używane | Dodaj samochód</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div class="msg" th:if="${message}" th:text="${message}"></div>
@@ -12,7 +13,7 @@
 
         <input type="hidden" name="id">
 
-        <table>
+        <table class="table table-sm" style="width:350px;">
             <tr>
                 <td class="add-text">Typ:</td>
                 <td class="add-input">
@@ -58,15 +59,11 @@
                 <td class="add-text">Cena:</td>
                 <td class="add-input"><input min="1000" max="999999" type="number" name="price" /> zł</td>
             </tr>
-            <tr>
-                <td></td>
-                <td class="add-input"><button class="end-button" type="submit">Dodaj</button></td>
-            </tr>
         </table>
+        <div class="button-field">
+            <div class="add-link"><button class="btn btn-secondary" type="submit">Dodaj</button></div>
+            <div class="add-link"><a class="btn btn-secondary" href="/main">Wróć</a></div>
+        </div>
     </form>
-
-
-
-
 </body>
 </html>

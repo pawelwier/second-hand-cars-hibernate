@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <title>Używane | Strona główna</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div class="msg" th:text="${deletedcar}"></div>
 <div class="container">
 
-    <table>
+    <table class="table table-sm">
         <thead>
         <tr>
             <th>Typ</th>
             <th>Marka</th>
             <th>Model</th>
-            <th>Rok produkcji</th>
+            <th>Rok prod.</th>
             <th>Paliwo</th>
             <th>Pojemność</th>
             <th>Moc</th>
@@ -36,20 +37,23 @@
             <td> <span th:text="${car.power}"></span> KM</td>
             <td th:text="${car.location}"></td>
             <td> <span th:text="${car.price}"> </span>zł</td>
-            <td><a th:href="@{|/cars/${car.id}/delete|}">Usuń</a></td>
+            <td class="column-center"><a th:href="@{|/cars/${car.id}/delete|}">Usuń</a></td>
         </tr>
         </tbody>
     </table>
 </div>
 <br>
+
 <form action="/main">
-    <input type="text" name="searchWord" />
-    <input type="submit" value="Szukaj" />
+    <div class="button-field">
+
+<div class="add-link"><a class="btn btn-secondary" href="/addcar">+ Dodaj samochód</a></div>
+<div class="add-link"><a class="btn btn-secondary" href="/">Skrócona lista</a></div>
+    <div class="add-link"></div> <input type="text" name="searchWord" />
+        <input class="btn btn-secondary" type="submit" value="Szukaj" /></div>
+</div>
+
 </form>
-<br>
-<div class="add-link"><a href="/addcar">+ Dodaj samochód</a></div>
-<br>
-<div class="add-link"><a href="/">Skrócona lista</a></div>
 </body>
 
 </html>

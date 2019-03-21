@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Używane | Strona główna</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <div th:if="${car}" class="msg-details">
-    <h2>Szczegóły pojazu:</h2>
+    <h2>Szczegóły pojazdu:</h2>
     Typ: <span th:text="${car.type}"></span >,
     <span th:text="${car.make}"></span >
     <span th:text="${car.model}"></span >, rok produkcji:
@@ -21,10 +22,9 @@
 </div>
 
 <div class="container">
-    <table>
+    <table class="table table-sm" style="width: 600px;">
         <thead>
         <tr>
-            <!--<th>Id</th>-->
             <th>Marka</th>
             <th>Model</th>
             <th>Cena</th>
@@ -44,11 +44,13 @@
 </div>
 <br>
 <form action="/">
+    <div class="button-field">
+        <div class="add-link"><a class="btn btn-secondary" href="/main">Pełna lista</a></div>
     <input type="text" name="searchWord" />
     <input type="submit" value="Szukaj" />
+    </div>
 </form>
-<br>
-<div class="add-link"><a href="/main">Pełna lista</a></div>
+
 
 </body>
 
