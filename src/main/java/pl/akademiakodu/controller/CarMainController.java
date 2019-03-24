@@ -4,10 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.akademiakodu.export.CreatorXLS;
 import pl.akademiakodu.repository.CarRepository;
 import pl.akademiakodu.model.Car;
 import pl.akademiakodu.service.CarService;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Controller
@@ -73,6 +76,18 @@ public class CarMainController {
                 car.getModel() + ", rok " + car.getYear() + ".");
 
         carRepository.deleteById(id);
+
+        return "redirect:/main";
+    }
+
+    @GetMapping("/excel")
+    public String createFile(RedirectAttributes redirectAttributes) throws NoSuchMethodException,
+            IOException, IllegalAccessException, InvocationTargetException {
+
+        CreatorXLS<Car> creatorXLS = new CreatorXLS<>(Car.class);
+        creatorXLS.createFile(carService.showCars(), "src/main/resources", "CarList");
+
+        redirectAttributes.addFlashAttribute("filemessage", "Plik utworzony");
 
         return "redirect:/main";
     }

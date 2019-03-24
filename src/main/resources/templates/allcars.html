@@ -48,6 +48,9 @@
     <div class="button-field">
 
 <div class="add-link"><a class="btn btn-secondary" href="/addcar">+ Dodaj samochód</a></div>
+        <div class="add-link"><a class="btn btn-secondary" href="/excel">Eksport do pliku</a>
+            <div class="cretedfiletext" th:if="${filemessage}"  th:text="${filemessage}"></div>
+        </div>
 <div class="add-link"><a class="btn btn-secondary" href="/">Skrócona lista</a></div>
     <div class="add-link"></div> <input type="text" name="searchWord" />
         <input class="btn btn-secondary" type="submit" value="Szukaj" /></div>
