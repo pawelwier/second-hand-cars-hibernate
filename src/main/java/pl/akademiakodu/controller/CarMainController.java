@@ -20,6 +20,8 @@ import java.util.stream.IntStream;
 @Controller
 public class CarMainController {
 
+    int pageNum;
+
     private CarService carService;
     private CarRepository carRepository;
 
@@ -33,10 +35,15 @@ public class CarMainController {
                           @PathVariable int page,
                           ModelMap modelMap) {
 
+        pageNum = page;
+
         List<Car> cars;
 
-        if (searchWord != null) cars = carRepository.searchByKeyword(searchWord);
-        else {
+        if (searchWord != null) {
+            cars = carRepository.searchByKeyword(searchWord);
+            modelMap.put("carList", cars);
+        }
+        if (searchWord == null || searchWord.isEmpty()) {
             PageRequest pageable = PageRequest.of(page - 1, 10);
             Page<Car> carPage = carService.getPaginatedCars(pageable);
 
