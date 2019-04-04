@@ -1,5 +1,7 @@
 package pl.akademiakodu.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import pl.akademiakodu.service.CarService;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class CarMainController {
@@ -24,16 +28,27 @@ public class CarMainController {
         this.carRepository = carRepository;
     }
 
-    @GetMapping("/main")
+    @GetMapping("/main/{page}")
     public String showAll(@RequestParam(required = false) String searchWord,
+                          @PathVariable int page,
                           ModelMap modelMap) {
 
         List<Car> cars;
 
         if (searchWord != null) cars = carRepository.searchByKeyword(searchWord);
-        else cars = carRepository.findAll();
+        else {
+            PageRequest pageable = PageRequest.of(page - 1, 10);
+            Page<Car> carPage = carService.getPaginatedCars(pageable);
 
-        modelMap.put("cars", cars);
+            int totalPages = carPage.getTotalPages();
+
+            if (totalPages > 0) {
+                List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+                modelMap.put("pageNumbers", pageNumbers);
+            }
+            modelMap.put("activeCarList", true);
+            modelMap.put("carList", carPage.getContent());
+        }
 
         return "allcars";}
 
@@ -92,7 +107,24 @@ public class CarMainController {
         return "redirect:/main";
     }
 
-
+//    @GetMapping("/car-list/page/{page}")
+//    public String listCarsPageByPage(@PathVariable int page,
+//                                           ModelMap modelMap) {
+//
+//        PageRequest pageable = PageRequest.of(page - 1, 10);
+//        Page<Car> carPage = carService.getPaginatedCars(pageable);
+//
+//        int totalPages = carPage.getTotalPages();
+//
+//        if (totalPages > 0) {
+//            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+//            modelMap.put("pageNumbers", pageNumbers);
+//            }
+//        modelMap.put("activeCarList", true);
+//        modelMap.put("carList", carPage.getContent());
+//        return "car-list-paging";
+//
+//    }
 
 
 }

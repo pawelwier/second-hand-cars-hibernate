@@ -1,5 +1,7 @@
 package pl.akademiakodu.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.akademiakodu.mappers.CarMapper;
 import pl.akademiakodu.model.Car;
@@ -77,6 +79,10 @@ public class CarService {
               .location(location)
               .price(price)
               .build());
+   }
+
+   public Page<Car> getPaginatedCars(Pageable pageable) {
+      return carRepository.findAll(pageable);
    }
 
 }

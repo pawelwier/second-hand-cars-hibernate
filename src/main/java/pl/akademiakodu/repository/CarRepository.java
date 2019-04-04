@@ -1,5 +1,7 @@
 package pl.akademiakodu.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pl.akademiakodu.model.Car;
@@ -14,5 +16,7 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     @Query("SELECT c FROM Car c WHERE c.id=?1")
     Car getCarById(Integer id);
+
+    Page<Car> findAll(Pageable pageable);
 
 }
