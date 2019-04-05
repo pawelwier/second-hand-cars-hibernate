@@ -30,9 +30,9 @@ public class CarMainController {
         this.carRepository = carRepository;
     }
 
-    @GetMapping("/main/{page}")
+    @GetMapping("/main")
     public String showAll(@RequestParam(required = false) String searchWord,
-                          @PathVariable int page,
+                          @RequestParam(required = false, defaultValue = "1") int page,
                           ModelMap modelMap) {
 
         pageNum = page;
@@ -65,7 +65,7 @@ public class CarMainController {
         return "addform";
     }
 
-    @PostMapping("/caradded")
+    @PostMapping("/main")
     public String addCar(@RequestParam(required = false) String type,
                             @RequestParam(required = false)  String make,
                             @RequestParam(required = false)  String model,
@@ -88,7 +88,7 @@ public class CarMainController {
 
     }
 
-    @RequestMapping("/cars/{id}/delete")
+    @GetMapping("/cars/{id}")
     public String deleteCarById(@PathVariable Integer id,
                                 RedirectAttributes redirectAttributes) {
 
@@ -113,25 +113,5 @@ public class CarMainController {
 
         return "redirect:/main";
     }
-
-//    @GetMapping("/car-list/page/{page}")
-//    public String listCarsPageByPage(@PathVariable int page,
-//                                           ModelMap modelMap) {
-//
-//        PageRequest pageable = PageRequest.of(page - 1, 10);
-//        Page<Car> carPage = carService.getPaginatedCars(pageable);
-//
-//        int totalPages = carPage.getTotalPages();
-//
-//        if (totalPages > 0) {
-//            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
-//            modelMap.put("pageNumbers", pageNumbers);
-//            }
-//        modelMap.put("activeCarList", true);
-//        modelMap.put("carList", carPage.getContent());
-//        return "car-list-paging";
-//
-//    }
-
 
 }

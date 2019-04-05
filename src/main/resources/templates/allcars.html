@@ -13,6 +13,11 @@
         .button-field {
             margin-left:50px;
         }
+        .msg {
+            color:darkred;
+            font-size:1.2em;
+            padding:10px 0 15px 70px;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +51,7 @@
             <td> <span th:text="${car.power}"></span> KM</td>
             <td th:text="${car.location}"></td>
             <td> <span th:text="${car.price}"> </span>zł</td>
-            <td class="column-center"><a th:href="@{|/cars/${car.id}/delete|}">Usuń</a></td>
+            <td class="column-center"><a th:href="@{|/cars/${car.id}|}">Usuń</a></td>
         </tr>
         </tbody>
     </table>
@@ -56,7 +61,7 @@
             <nav aria-label="Pagination">
                 <ul class="pagination justify-content-center">
                     <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
-                        <a class="page-link" th:href="@{|/main/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                        <a class="page-link" th:href="@{|/main?page=${pageNumber}|}" th:text=${pageNumber}>1</a>
                     </li>
                 </ul>
             </nav>
@@ -66,7 +71,7 @@
 </div>
 <br>
 
-<form action="/main/1/">
+<form action="/main">
     <div class="button-field">
 
 <div class="add-link"><a class="btn btn-secondary" href="/addcar">+ Dodaj samochód</a></div>
